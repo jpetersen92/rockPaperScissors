@@ -1,30 +1,59 @@
-const computerChoiceDisplay = document.getElementById('computer-choice')
-const userChoiceDisplay = document.getElementById('user-choice')
+const computerChoiceDisplay = document.getElementById('computerChoice')
+const userChoiceDisplay = document.getElementById('userChoice')
 const resultDisplay = document.getElementById('result')
-const possibleChoices = document.querySelectorAll('button')
+const possibleChoices = document.querySelectorAll('.userButton')
+const welcomeScreen = document.getElementById('welcomeScreen')
+const userInterface = document.getElementById('userInterface')
+const startButton = document.getElementById('start')
+
+
+const rock = '🪨'
+const paper = '📄'
+const scissors = '✂️'
 
 let userChoice
 let computerChoice
 let result
 
+startButton.addEventListener('click', () => {
+    startGame()
+})
+
 possibleChoices.forEach(choice => choice.addEventListener('click', (e) => {
     userChoice = e.target.id
-    userChoiceDisplay.innerHTML = userChoice
+    let answer
+    if(userChoice === 'rock') {
+        answer = rock
+    } if(userChoice === 'paper') {
+        answer = paper
+    } if(userChoice === 'scissors') {
+        answer = scissors
+    }
+    userChoiceDisplay.textContent = answer
     generateComputerChoice()
     getResult()
 }))
 
+const startGame = () =>{
+    welcomeScreen.classList.add('hidden')
+    userInterface.classList.remove('hidden')
+}
+
 const generateComputerChoice = () => {
+    let answer
     const randomNumber =  Math.floor(Math.random() * possibleChoices.length) + 1
     if(randomNumber === 1) {
         computerChoice = 'rock'
+        answer = rock
     } if(randomNumber === 2) {
         computerChoice = 'paper'
+        answer = paper
     } if(randomNumber === 3) {
         computerChoice = 'scissors'
+        answer = scissors
     }
 
-    computerChoiceDisplay.innerHTML = computerChoice
+    computerChoiceDisplay.textContent = answer
 }
 
 const getResult = () => {
@@ -44,5 +73,5 @@ const getResult = () => {
         result = 'You Lost'
     }
     
-    resultDisplay.innerHTML = result
+    resultDisplay.textContent = result
 }

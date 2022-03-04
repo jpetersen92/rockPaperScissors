@@ -8,13 +8,20 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h2>Computer Choice: <span id="computer-choice"></span></h2>
-    <h2>User Choice: <span id="user-choice"></span></h2>
-    <h2>Result: <span id="result"></span></h2>
+    <div id="welcomeScreen">
+        <h1>Rock, Paper, Scissors</h1>
+        <button id="start">Start Game</button>
+    </div>
 
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <div id="userInterface" class="hidden">
+        <h2>Computer: <span id="computerChoice"></span></h2>
+        <h2>Paper: <span id="userChoice"></span></h2>
+        <h2>Result: <span id="result"></span></h2>
+    
+        <button class="userButton" id="rock">Rock</button>
+        <button class="userButton" id="paper">Paper</button>
+        <button class="userButton" id="scissors">Scissors</button>
+    </div>
 
     <script src="./app.js"></script>
 </body>
